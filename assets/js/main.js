@@ -1,3 +1,5 @@
+const submitBtn = document.getElementById("button-addon2");
+
 const renderCities = (citiesFromLocalStorage) => {
   // For each city construct a list item and append to the list group
 };
@@ -96,7 +98,6 @@ const onClick = () => {
   // fetchAllWeatherData(cityName)
 };
 
-const submitBtn = document.getElementById("button-addon2");
 $(submitBtn).click(onClick);
 
 $("#target-your-list-items").click(onClick);
