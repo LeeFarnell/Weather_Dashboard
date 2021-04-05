@@ -23,26 +23,126 @@
     <header>
       <h1 class="text-light bg-dark text-center p-4">Weather Dashboard</h1>
     </header>
-    <main>
-      <div class="container m-0">
+    
+    <div class="container m-0 row w-100">
+      <div class="side col-3">
         <h2>Search For A City</h2>
-        <div class="input-group mb-3 w-25">
+        <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             placeholder="Enter A City"
-            aria-label="Enter A City"
+            aria-label="Enter A City" 
             aria-describedby="button-addon2"
           />
-          <button class="btn btn-primary" type="button" id="button-addon2">
-            <i class="fas fa-search-location"></i>
-          </button>
+            <button class="btn btn-primary" type="button" id="button-addon2">
+              <i class="fas fa-search-location"></i>
+            </button>
+          </div>
+
+          <div class="recent-history">
+            <ul class="list-group">
+              <li class="list-group-item">Recent City Search</li>
+              <li class="list-group-item">Recent City Search</li>
+              <li class="list-group-item">Recent City Search</li>
+              <li class="list-group-item">Recent City Search</li>
+              <li class="list-group-item">Recent City Search</li>
+            </ul>
+          </div>
         </div>
-        <div class="recent-history">Recent Searches</div>
-        <div class="weather-main-card">Main Card</div>
-        <div class="five-day-cards">5 Day Forecast</div>
+
+      <div class="main col-9">
+       <div class="weather-main-card"></div>
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">City Name</h3>
+            <ul>
+              <li> Temp </li>
+              <li> Humidity </li>
+              <li> Wind Speed</li>
+              <li> UV </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text"></p>
+                 <ul>
+                <li>Icon</li>
+                <li>Temp</li>
+                </ul>  
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text">
+                  <ul>
+                    <li>Icon</li>
+                    <li>Temp</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text">
+                  <ul>
+                    <li>Icon</li>
+                    <li>Temp</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text">
+                  <ul>
+                    <li>Icon</li>
+                    <li>Temp</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text">
+                  <ul>
+                    <li>Icon</li>
+                    <li>Temp</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        
       </div>
-    </main>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="/assets/js/main.js"></script>
