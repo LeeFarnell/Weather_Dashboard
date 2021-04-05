@@ -91,9 +91,13 @@ const onSubmit = () => {
 };
 
 const onClick = () => {
+  console.log("click");
   // get city name from the list item that was clicked and store in variable called cityName
   // fetchAllWeatherData(cityName)
 };
+
+const submitBtn = document.getElementById("button-addon2");
+$(submitBtn).click(onClick);
 
 $("#target-your-list-items").click(onClick);
 
