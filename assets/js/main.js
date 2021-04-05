@@ -86,6 +86,116 @@ const fetchAllWeatherData = (cityName) => {
 
 // function called on load of the document
 const onLoad = () => {
+  console.log("loaded");
+
+  const functionForJSON = (responseObject) => {
+    // unless you have some logic here do that before you return
+    return responseObject.json();
+  };
+  const functionForApplication = (dataFromServer) => {
+    // whatever your application code is goes here
+    const onLoadWeather = dataFromServer;
+
+    const cards = () => {
+      const card = `<div class="weather-main-card"></div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">${onLoadWeather.name} </h3>
+          <ul>
+            <li> Current Temperature: ${onLoadWeather.main.temp} </li>
+            <li> Humidity: ${onLoadWeather.main.humidity} </li>
+            <li> Wind Speed: ${onLoadWeather.wind.speed} </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text"></p>
+                 <ul>
+                <li>Icon</li>
+                <li>Temp</li>
+                </ul>  
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text">
+                  <ul>
+                    <li>Icon</li>
+                    <li>Temp</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text">
+                  <ul>
+                    <li>Icon</li>
+                    <li>Temp</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text">
+                  <ul>
+                    <li>Icon</li>
+                    <li>Temp</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date Here</h5>
+                <p class="card-text">
+                  <ul>
+                    <li>Icon</li>
+                    <li>Temp</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>`;
+
+      return card;
+    };
+    console.log(cards);
+
+    $("#main-container").append(cards);
+  };
+  const functionToHandleError = (errorObject) => {
+    // handle your error here according to your application
+  };
+  fetch(
+    "http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8"
+  )
+    .then(functionForJSON)
+    .then(functionForApplication)
+    .catch(functionToHandleError);
+
   // read from local storage amd store data in variable called citiesFromLocalStorage
   // if data is present call renderCities and pass the data from local storage
   // renderCities(citiesFromLocalStorage)
