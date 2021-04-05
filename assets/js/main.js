@@ -1,3 +1,4 @@
+const listItem = document.getElementById("list-item");
 const submitBtn = document.getElementById("button-addon2");
 
 const renderCities = (citiesFromLocalStorage) => {
@@ -88,6 +89,7 @@ const onLoad = () => {
 
 // function called when the form is submitted
 const onSubmit = () => {
+  console.log("submit");
   // get city name and store in variable called cityName
   // fetchAllWeatherData(cityName)
 };
@@ -98,10 +100,8 @@ const onClick = () => {
   // fetchAllWeatherData(cityName)
 };
 
-$(submitBtn).click(onClick);
+$(listItem).click(onClick);
 
-$("#target-your-list-items").click(onClick);
-
-$("#your-form-id").submit(onSubmit);
+$(submitBtn).click(onSubmit);
 
 $(document).ready(onLoad);
