@@ -207,9 +207,8 @@ const onLoad = () => {
 
 // function called when the form is submitted
 const onSubmit = () => {
-  const citySearch = document.querySelector("#city-search").value;
-  citySearch.preventDefault();
-  console.log(citySearch);
+  const cityName = document.querySelector("#city-search").value;
+  console.log(cityName);
   // get city name and store in variable called cityName
   // fetchAllWeatherData(cityName)
 };
