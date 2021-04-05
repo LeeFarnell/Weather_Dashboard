@@ -1,5 +1,11 @@
 let listItem = document.getElementById("list-item");
 const submitBtn = document.getElementById("button-addon2");
+const weatherApiUrl = fetch(
+  `http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`
+);
+const oneApiUrl = fetch(
+  `https://api.openweathermap.org/data/2.5/onecall?lat=52.4814&lon=-1.8998&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`
+);
 
 const renderCities = (citiesFromLocalStorage) => {
   // For each city construct a list item and append to the list group
