@@ -86,8 +86,6 @@ const fetchAllWeatherData = (cityName) => {
 
 // function called on load of the document
 const onLoad = () => {
-  console.log("loaded");
-
   const functionForJSON = (responseObject) => {
     // unless you have some logic here do that before you return
     return responseObject.json();
@@ -100,11 +98,12 @@ const onLoad = () => {
       const card = `<div class="weather-main-card"></div>
       <div class="card">
         <div class="card-body">
-          <h3 class="card-title">${onLoadWeather.name} </h3>
+          <h3 class="card-title">${onLoadWeather.name} <img src="http://openweathermap.org/img/wn/${onLoadWeather.weather.icon}@2x.png" /> </h3>
           <ul>
             <li> Current Temperature: ${onLoadWeather.main.temp} </li>
             <li> Humidity: ${onLoadWeather.main.humidity} </li>
             <li> Wind Speed: ${onLoadWeather.wind.speed} </li>
+            
           </ul>
         </div>
       </div>
@@ -189,9 +188,11 @@ const onLoad = () => {
   const functionToHandleError = (errorObject) => {
     // handle your error here according to your application
   };
-  fetch(
-    "http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8"
-  )
+
+  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
+  const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=52.4814&lon=-1.8998&exclude=minutely,hourly&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
+
+  fetch(weatherApiUrl)
     .then(functionForJSON)
     .then(functionForApplication)
     .catch(functionToHandleError);
