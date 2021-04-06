@@ -111,10 +111,13 @@ const onLoad = () => {
       </div>
       
       <div class="row">
+      <h3 class="pt-3"> 5-Day Forecast </h3>
           <div class="col-sm">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Date Here</h5>
+                <h5 class="card-title">${moment()
+                  .add(1, "days")
+                  .format("DD/MM/YYYY")}</h5>
                 <p class="card-text"></p>
                  <ul>
                 <li>Icon</li>
@@ -129,7 +132,9 @@ const onLoad = () => {
           <div class="col-sm">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Date Here</h5>
+                <h5 class="card-title">${moment()
+                  .add(2, "days")
+                  .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
                   <ul>
                     <li>Icon</li>
@@ -144,7 +149,9 @@ const onLoad = () => {
           <div class="col-sm">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Date Here</h5>
+                <h5 class="card-title">${moment()
+                  .add(3, "days")
+                  .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
                   <ul>
                     <li>Icon</li>
@@ -159,7 +166,9 @@ const onLoad = () => {
           <div class="col-sm">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Date Here</h5>
+                <h5 class="card-title">${moment()
+                  .add(4, "days")
+                  .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
                   <ul>
                     <li>Icon</li>
@@ -174,7 +183,9 @@ const onLoad = () => {
           <div class="col-sm">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Date Here</h5>
+                <h5 class="card-title">${moment()
+                  .add(5, "days")
+                  .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
                   <ul>
                     <li>Icon</li>
