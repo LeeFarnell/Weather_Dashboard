@@ -119,10 +119,14 @@ const onLoad = () => {
                   .add(1, "days")
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text"></p>
-                 <ul>
+                 <ul class="list-unstyled">
                 <li>Icon</li>
-                <li>Temp</li>
-                <li>Humid</li>
+                <li class="pt-2">Temp: ${
+                  onLoadWeather.daily[1].temp.day
+                }°C </li>
+                <li class="pt-2">Humidity: ${
+                  onLoadWeather.daily[1].humidity
+                }</li>
                 </ul>  
                 </p>
               </div>
@@ -136,10 +140,14 @@ const onLoad = () => {
                   .add(2, "days")
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
-                  <ul>
+                  <ul class="list-unstyled">
                     <li>Icon</li>
-                    <li>Temp</li>
-                    <li>Humid</li>
+                    <li class="pt-2">Temp: ${
+                      onLoadWeather.daily[2].temp.day
+                    }°C</li>
+                    <li class="pt-2">Humidity: ${
+                      onLoadWeather.daily[2].humidity
+                    }</li>
                   </ul>
                 </p>
               </div>
@@ -153,10 +161,14 @@ const onLoad = () => {
                   .add(3, "days")
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
-                  <ul>
+                  <ul class="list-unstyled">
                     <li>Icon</li>
-                    <li>Temp</li>
-                    <li>Humid</li>
+                    <li class="pt-2">Temp: ${
+                      onLoadWeather.daily[3].temp.day
+                    }°C</li>
+                    <li class="pt-2">Humidity: ${
+                      onLoadWeather.daily[3].humidity
+                    }</li>
                   </ul>
                 </p>
               </div>
@@ -170,10 +182,14 @@ const onLoad = () => {
                   .add(4, "days")
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
-                  <ul>
+                  <ul class="list-unstyled">
                     <li>Icon</li>
-                    <li>Temp</li>
-                    <li>Humid</li>
+                    <li class="pt-2">Temp: ${
+                      onLoadWeather.daily[4].temp.day
+                    }°C</li>
+                    <li class="pt-2">Humidity: ${
+                      onLoadWeather.daily[4].humidity
+                    }</li>
                   </ul>
                 </p>
               </div>
@@ -187,10 +203,14 @@ const onLoad = () => {
                   .add(5, "days")
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
-                  <ul>
+                  <ul class="list-unstyled">
                     <li>Icon</li>
-                    <li>Temp</li>
-                    <li>Humid</li>
+                    <li class="pt-2">Temp: ${
+                      onLoadWeather.daily[5].temp.day
+                    }°C</li>
+                    <li class="pt-2">Humidity ${
+                      onLoadWeather.daily[5].humidity
+                    }</li>
                   </ul>
                 </p>
               </div>
