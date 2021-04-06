@@ -87,13 +87,13 @@ const onLoad = () => {
   const functionForApplication = (dataFromServer) => {
     // whatever your application code is goes here
     const onLoadWeather = dataFromServer;
-    const currentDate = moment().format("DD-MM-YY");
+    const cityName = document.querySelector("#city-search").value;
 
     const cards = () => {
       const card = `<div class="weather-main-card"></div>
       <div class="card">
         <div class="card-body">
-          <h3 class="card-title d-inline"> Birmingham (${moment().format(
+          <h3 class="card-title d-inline" id="city-name"> Birmingham - (${moment().format(
             "DD/MM/YYYY"
           )})</h3>
           <ul class="list-unstyled">
@@ -245,7 +245,10 @@ const onLoad = () => {
 
 // function called when the form is submitted
 const onSubmit = () => {
+  const cityNameH3 = document.getElementById("city-name");
   const cityName = document.querySelector("#city-search").value;
+  const currentDate = moment().format("DD/MM/YYYY");
+  cityNameH3.textContent = cityName;
   console.log(cityName);
   // get city name and store in variable called cityName
   // fetchAllWeatherData(cityName)
