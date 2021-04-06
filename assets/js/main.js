@@ -1,11 +1,5 @@
 let listItem = document.getElementById("list-item");
 const submitBtn = document.getElementById("button-addon2");
-const weatherApiUrl = fetch(
-  `http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`
-);
-const oneApiUrl = fetch(
-  `https://api.openweathermap.org/data/2.5/onecall?lat=52.4814&lon=-1.8998&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`
-);
 
 const renderCities = (citiesFromLocalStorage) => {
   // For each city construct a list item and append to the list group
@@ -93,17 +87,24 @@ const onLoad = () => {
   const functionForApplication = (dataFromServer) => {
     // whatever your application code is goes here
     const onLoadWeather = dataFromServer;
+    const currentDate = moment().format("DD-MM-YY");
 
     const cards = () => {
       const card = `<div class="weather-main-card"></div>
       <div class="card">
         <div class="card-body">
-          <h3 class="card-title"> Birmingham </h3>
-          <ul>
-            <li> Current Temperature: ${onLoadWeather.current.temp} </li>
-            <li> Humidity: ${onLoadWeather.current.humidity} </li>
-            <li> Wind Speed: ${onLoadWeather.current.wind_speed} </li>
-            <li> UV Index: ${onLoadWeather.current.uvi} </li>
+          <h3 class="card-title d-inline"> Birmingham (${moment().format(
+            "DD/MM/YYYY"
+          )})</h3>
+          <ul class="list-unstyled">
+            <li class="pt-3"> Current Temperature: ${
+              onLoadWeather.current.temp
+            }°C </li>
+            <li class="pt-3"> Humidity: ${onLoadWeather.current.humidity} </li>
+            <li class="pt-3"> Wind Speed: ${
+              onLoadWeather.current.wind_speed
+            } </li>
+            <li class="pt-3"> UV Index: ${onLoadWeather.current.uvi} </li>
             
           </ul>
         </div>
@@ -118,6 +119,7 @@ const onLoad = () => {
                  <ul>
                 <li>Icon</li>
                 <li>Temp</li>
+                <li>Humid</li>
                 </ul>  
                 </p>
               </div>
@@ -132,6 +134,7 @@ const onLoad = () => {
                   <ul>
                     <li>Icon</li>
                     <li>Temp</li>
+                    <li>Humid</li>
                   </ul>
                 </p>
               </div>
@@ -146,6 +149,7 @@ const onLoad = () => {
                   <ul>
                     <li>Icon</li>
                     <li>Temp</li>
+                    <li>Humid</li>
                   </ul>
                 </p>
               </div>
@@ -160,6 +164,7 @@ const onLoad = () => {
                   <ul>
                     <li>Icon</li>
                     <li>Temp</li>
+                    <li>Humid</li>
                   </ul>
                 </p>
               </div>
@@ -174,6 +179,7 @@ const onLoad = () => {
                   <ul>
                     <li>Icon</li>
                     <li>Temp</li>
+                    <li>Humid</li>
                   </ul>
                 </p>
               </div>
@@ -184,6 +190,7 @@ const onLoad = () => {
     };
     console.log(cards);
 
+    $("#current-date").text(moment().format("DD-MM-YY"));
     $("#main-container").append(cards);
   };
   const functionToHandleError = (errorObject) => {
