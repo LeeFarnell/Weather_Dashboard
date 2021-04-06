@@ -84,8 +84,13 @@ const onLoad = () => {
     // unless you have some logic here do that before you return
     return responseObject.json();
   };
+
+  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
+  const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=52.4814&lon=-1.8998&exclude=minutely,hourly&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
+
   const functionForApplication = (dataFromServer) => {
     // whatever your application code is goes here
+
     const onLoadWeather = dataFromServer;
     const cityName = document.querySelector("#city-search").value;
 
@@ -228,10 +233,12 @@ const onLoad = () => {
     // handle your error here according to your application
   };
 
-  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
-  const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=52.4814&lon=-1.8998&exclude=minutely,hourly&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
-
   fetch(oneApiUrl)
+    .then(functionForJSON)
+    .then(functionForApplication)
+    .catch(functionToHandleError);
+
+  fetch(weatherApiUrl)
     .then(functionForJSON)
     .then(functionForApplication)
     .catch(functionToHandleError);
