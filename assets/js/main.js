@@ -249,7 +249,6 @@ const onSubmit = () => {
   const cityName = document.querySelector("#city-search").value;
   const currentDate = moment().format("DD/MM/YYYY");
   cityNameH3.textContent = cityName;
-  console.log(cityName);
   // get city name and store in variable called cityName
   // fetchAllWeatherData(cityName)
 };
