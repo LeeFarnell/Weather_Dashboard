@@ -161,7 +161,9 @@ const onLoad = () => {
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text"></p>
                  <ul class="list-unstyled">
-                <li>Icon</li>
+                <li><img src="http://openweathermap.org/img/w/${
+                  onLoadWeather.daily[1].weather[0].icon
+                }.png" /></li>
                 <li class="pt-2">Temp: ${
                   onLoadWeather.daily[1].temp.day
                 }°C </li>
@@ -182,7 +184,9 @@ const onLoad = () => {
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
                   <ul class="list-unstyled">
-                    <li>Icon</li>
+                    <li><img src="http://openweathermap.org/img/w/${
+                      onLoadWeather.daily[2].weather[0].icon
+                    }.png" /></li>
                     <li class="pt-2">Temp: ${
                       onLoadWeather.daily[2].temp.day
                     }°C</li>
@@ -203,7 +207,9 @@ const onLoad = () => {
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
                   <ul class="list-unstyled">
-                    <li>Icon</li>
+                    <li><img src="http://openweathermap.org/img/w/${
+                      onLoadWeather.daily[3].weather[0].icon
+                    }.png" /></li>
                     <li class="pt-2">Temp: ${
                       onLoadWeather.daily[3].temp.day
                     }°C</li>
@@ -224,7 +230,9 @@ const onLoad = () => {
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
                   <ul class="list-unstyled">
-                    <li>Icon</li>
+                    <li><img src="http://openweathermap.org/img/w/${
+                      onLoadWeather.daily[4].weather[0].icon
+                    }.png" /></li>
                     <li class="pt-2">Temp: ${
                       onLoadWeather.daily[4].temp.day
                     }°C</li>
@@ -245,7 +253,9 @@ const onLoad = () => {
                   .format("DD/MM/YYYY")}</h5>
                 <p class="card-text">
                   <ul class="list-unstyled">
-                    <li>Icon</li>
+                    <li><img src="http://openweathermap.org/img/w/${
+                      onLoadWeather.daily[5].weather[0].icon
+                    }.png" /></li>
                     <li class="pt-2">Temp: ${
                       onLoadWeather.daily[5].temp.day
                     }°C</li>
