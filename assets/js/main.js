@@ -40,6 +40,8 @@ const renderForecastCardComponent = (forecastData) => {
 
 const fetchAllWeatherData = (cityName) => {
   // construct URL for http://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid={API_KEY} and store in variable called as weatherApiUrl
+  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName},%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
+
   const functionForJSON = (responseObject) => {
     // unless you have some logic here do that before you return
     return responseObject.json();
@@ -47,7 +49,12 @@ const fetchAllWeatherData = (cityName) => {
   const functionForApplication = (dataFromServer) => {
     // whatever your application code is goes here
     // 1. from the dataFromServer get the lat and lon
+    const currentWeather = dataFromServer;
+    const cityLat = currentWeather.coord.lat;
+    const cityLon = currentWeather.coord.lon;
+
     // 2. use lat lon to construct https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API_KEY} and store in variable called oneApiUrl
+    const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
 
     const functionForJSON = (responseObject) => {
       // unless you have some logic here do that before you return
@@ -92,7 +99,6 @@ const onLoad = () => {
     // whatever your application code is goes here
 
     const onLoadWeather = dataFromServer;
-    const cityName = document.querySelector("#city-search").value;
 
     const cards = () => {
       const card = `<div class="weather-main-card"></div>
