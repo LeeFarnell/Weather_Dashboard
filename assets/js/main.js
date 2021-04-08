@@ -56,6 +56,32 @@ const fetchAllWeatherData = (cityName) => {
     // 2. use lat lon to construct https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API_KEY} and store in variable called oneApiUrl
     const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
 
+    const cards = () => {
+      const card = `<div class="weather-main-card"></div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title d-inline" id="city-name"> ${
+            currentWeather.name
+          } - (${moment().format("DD/MM/YYYY")})</h3>
+          <ul class="list-unstyled">
+            <li class="pt-3"> Current Temperature: ${
+              oneApiUrl.current.temp
+            }°C </li>
+            <li class="pt-3"> Humidity: ${oneApiUrl.current.humidity} </li>
+            <li class="pt-3"> Wind Speed: ${oneApiUrl.current.wind_speed} </li>
+            <li class="pt-3"> UV Index: ${oneApiUrl.current.uvi} </li>
+            
+          </ul>
+        </div>
+      </div>`;
+      return card;
+    };
+    console.log(cards);
+
+    $("#current-date").text(moment().format("DD-MM-YY"));
+    $("#main-container").remove(onLoad);
+    $("#main-container").append(cards);
+
     const functionForJSON = (responseObject) => {
       // unless you have some logic here do that before you return
       return responseObject.json();
@@ -263,7 +289,7 @@ const onSubmit = () => {
   const currentDate = moment().format("DD/MM/YYYY");
   cityNameH3.textContent = cityName;
   // get city name and store in variable called cityName
-  // fetchAllWeatherData(cityName)
+  fetchAllWeatherData(cityName);
 };
 
 const onClick = () => {
