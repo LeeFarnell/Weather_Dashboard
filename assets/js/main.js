@@ -79,7 +79,7 @@ const fetchAllWeatherData = (cityName) => {
     console.log(cards);
 
     $("#current-date").text(moment().format("DD-MM-YY"));
-    $("#main-container").remove(onLoad);
+    // $("#main-container").empty();
     $("#main-container").append(cards);
 
     const functionForJSON = (responseObject) => {
@@ -126,13 +126,17 @@ const onLoad = () => {
 
     const onLoadWeather = dataFromServer;
 
+    console.log(onLoadWeather.current);
+
     const cards = () => {
       const card = `<div class="weather-main-card"></div>
       <div class="card">
         <div class="card-body">
           <h3 class="card-title d-inline" id="city-name"> Birmingham - (${moment().format(
             "DD/MM/YYYY"
-          )})</h3>
+          )})</h3> <img src="http://openweathermap.org/img/w/${
+        onLoadWeather.current.weather[0].icon
+      }.png" />
           <ul class="list-unstyled">
             <li class="pt-3"> Current Temperature: ${
               onLoadWeather.current.temp
