@@ -297,9 +297,11 @@ const onLoad = () => {
 };
 
 // function called when the form is submitted
-const onSubmit = () => {
+const onSubmit = (event) => {
+  event.preventDefault();
+
   const cityNameH3 = document.getElementById("city-name");
-  const cityName = document.querySelector("#city-search").value;
+  const cityName = $(`#city-search`).val();
   const currentDate = moment().format("DD/MM/YYYY");
   cityNameH3.textContent = cityName;
   // get city name and store in variable called cityName
