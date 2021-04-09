@@ -327,18 +327,67 @@ const onLoad = () => {
 const onSubmit = (event) => {
   event.preventDefault();
 
-  const cityNameH3 = document.getElementById("city-name");
-  const cityName = $(`#city-search`).val();
-  const currentDate = moment().format("DD/MM/YYYY");
-  cityNameH3.textContent = cityName;
+  const cityName = $("#city-search").val();
+
+  const cities = getLocalStorageCities();
+
+  cities.push(cityName);
+
+  localStorage.setItem("cities", JSON.stringify(cities));
+
+  localStorageCities();
+
+  $("#city-search").val("");
   // get city name and store in variable called cityName
-  fetchAllWeatherData(cityName);
+  // fetchAllWeatherData(cityName);
 };
 
 const onClick = () => {
   console.log("click");
   // get city name from the list item that was clicked and store in variable called cityName
   // fetchAllWeatherData(cityName)
+};
+
+const getDataCityName = (event) => {
+  const target = $(event.target);
+  if (target.is("li")) {
+    const cityName = target.data("city");
+
+    renderAllCards(cityName);
+  }
+};
+
+const getLocalStorageCities = () => {
+  const localStorageData = JSON.parse(localStorage.getItem("cities"));
+
+  if (localStorageData === null) {
+    return [];
+  } else {
+    return localStorageData;
+  }
+};
+
+const localStorageCities = () => {
+  $("#recent-history").empty();
+
+  const cities = getLocalStorageCities();
+
+  const ul = $("<ul>").addClass("list-group");
+
+  const liToUl = (city) => {
+    const li = $("<li>")
+      .addClass("list-group-item")
+      .attr("data-city", city)
+      .text(city);
+
+    ul.append(li);
+  };
+
+  cities.forEach(liToUl);
+
+  ul.on("click", getDataCityName);
+
+  $("#recent-history").append(ul);
 };
 
 $(listItem).click(onClick);
