@@ -1,5 +1,6 @@
 let listItem = document.getElementById("list-item");
 const submitBtn = document.getElementById("button-addon2");
+const apiKey = "096b51f6d82cf2d709ac1ea8e159d2b8";
 
 const renderCities = (citiesFromLocalStorage) => {
   // For each city construct a list item and append to the list group
@@ -40,7 +41,7 @@ const renderForecastCardComponent = (forecastData) => {
 
 const fetchAllWeatherData = (cityName) => {
   // construct URL for http://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid={API_KEY} and store in variable called as weatherApiUrl
-  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName},%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
+  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName},%20GB&units=metric&appid=${apiKey}`;
 
   const functionForJSON = (responseObject) => {
     // unless you have some logic here do that before you return
@@ -54,7 +55,7 @@ const fetchAllWeatherData = (cityName) => {
     const cityLon = currentWeather.coord.lon;
 
     // 2. use lat lon to construct https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API_KEY} and store in variable called oneApiUrl
-    const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
+    const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
 
     const cards = () => {
       const card = `<div class="weather-main-card"></div>
@@ -118,8 +119,8 @@ const onLoad = () => {
     return responseObject.json();
   };
 
-  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
-  const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=52.4814&lon=-1.8998&exclude=minutely,hourly&units=metric&appid=096b51f6d82cf2d709ac1ea8e159d2b8`;
+  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=Birmingham,%20GB&units=metric&appid=${apiKey}`;
+  const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=52.4814&lon=-1.8998&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
 
   const functionForApplication = (dataFromServer) => {
     // whatever your application code is goes here
