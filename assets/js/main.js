@@ -6,20 +6,20 @@ const renderCities = (citiesFromLocalStorage) => {
   // For each city construct a list item and append to the list group
 };
 
-const getCurrentData = (opeApiData) => {
+const getCurrentData = (dataFromServer) => {
   // from object extract the data points you need for the return data
   return {
-    name: "",
-    date: "",
-    iconURL: "",
-    temperature: "",
-    humidity: "",
-    windSpeed: "",
+    name: dataFromServer.name,
+    date: moment().format("DD/MM/YYYY"),
+    iconURL: `http://openweathermap.org/img/w/${dataFromServer.weather[0].icon}.png`,
+    temperature: dataFromServer.main.temp,
+    humidity: dataFromServer.main.humidity,
+    windSpeed: dataFromServer.wind.speed,
     uvIndex: 0,
   };
 };
 
-const getForecastData = (opeApiData) => {
+const getForecastData = (openApiData) => {
   // iterate and construct the return data array
   return [
     {
