@@ -31,8 +31,34 @@ const getForecastData = (opeApiData) => {
   ];
 };
 
-const renderCurrentCardComponent = (currentData) => {
+const renderCurrentCardComponent = (data) => {
   // from current data build the current card component
+
+  $("#main-container").empty();
+
+  const card = `<div class="weather-main-card"></div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title d-inline" id="city-name"> Birmingham - (${moment().format(
+            "DD/MM/YYYY"
+          )})</h3> <img src="http://openweathermap.org/img/w/${
+    onLoadWeather.current.weather[0].icon
+  }.png" />
+          <ul class="list-unstyled">
+            <li class="pt-3"> Current Temperature: ${
+              onLoadWeather.current.temp
+            }°C </li>
+            <li class="pt-3"> Humidity: ${onLoadWeather.current.humidity} </li>
+            <li class="pt-3"> Wind Speed: ${
+              onLoadWeather.current.wind_speed
+            } </li>
+            <li class="pt-3"> UV Index: ${onLoadWeather.current.uvi} </li>
+            
+          </ul>
+        </div>
+      </div>`;
+
+  $("#main-container").append(card);
 };
 
 const renderForecastCardComponent = (forecastData) => {
