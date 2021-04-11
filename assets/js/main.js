@@ -129,7 +129,9 @@ const mainCard = (weatherData) => {
   const card = `<div class="card-body b-2 ">
   <h3 class="card-title d-inline" id="city-name"> ${weatherData.cityName} (${
     weatherData.date
-  }) </h3> <img src="http://openweathermap.org/img/w/${weatherData.icon}.png" />
+  }) </h3> <img src="https://openweathermap.org/img/w/${
+    weatherData.icon
+  }.png" />
   <ul class="list-unstyled">
     <li class="pt-3">Current Temperature: ${weatherData.temperature}°C</li>
     <li class="pt-3">Humidity: ${weatherData.humidity}</li>
@@ -150,7 +152,7 @@ const fiveDayCard = (forecastData) => {
       <h5 class="card-title">${forecastData.date}</h5>
       <p class="card-text">
         <ul class="list-unstyled">
-          <li><img src="http://openweathermap.org/img/w/${forecastData.icon}.png" /> </li>
+          <li><img src="https://openweathermap.org/img/w/${forecastData.icon}.png" /> </li>
           <li class="pt-2">Temp: ${forecastData.temperature}°C</li>
           <li class="pt-2">Humidity: ${forecastData.humidity} </li>
         </ul>
