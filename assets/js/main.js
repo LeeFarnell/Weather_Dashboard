@@ -40,17 +40,34 @@ const buildCityList = () => {
 
   cities.map(liToUl);
 
-  const onClick = (event) => {
+  const onClick = async (event) => {
     const target = $(event.target);
     if (target.is("li")) {
       const cityName = target.data("city");
-      fetchWeatherData(cityName);
+
+      const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
+
+      const data = await fetchWeatherData(weatherApiUrl);
+
+      console.log(data);
     }
   };
 
   ul.on("click", onClick);
 
   $("#city-list").append(ul);
+};
+
+const transformData = (response) => {
+  return {
+    cityName: response.name,
+    temperature: response.main.temp,
+    humidity: response.main.humidity,
+    windSpeed: response.wind.speed,
+    uvIndex: 0,
+    date: moment.unix(response.dt).format("DD/MM/YY"),
+    icon: response.weather[0].icon,
+  };
 };
 
 const onSubmit = async (event) => {
@@ -72,7 +89,26 @@ const onSubmit = async (event) => {
 
   const data = await fetchWeatherData(weatherApiUrl);
 
+  const currentData = transformData(data);
+
+  mainCard(currentData);
+
   console.log(data);
+  console.log(currentData);
+};
+
+const mainCard = (weatherData) => {
+  const card = `<div class="card-body b-2">
+  <h3 class="card-title d-inline" id="city-name"> ${weatherData.cityName} (${weatherData.date}) </h3> <img src="http://openweathermap.org/img/w/${weatherData.icon}.png" />
+  <ul class="list-unstyled">
+    <li class="pt-3">Current Temperature: ${weatherData.temperature}°C</li>
+    <li class="pt-3">Humidity: ${weatherData.humidity}</li>
+    <li class="pt-3">Wind Speed: ${weatherData.windSpeed}</li>
+    <li class="pt-3">UV Index: ${weatherData.uvIndex}</li>
+  </ul>
+</div>`;
+
+  $("#current-weather").append(card);
 };
 
 const onLoad = () => {
