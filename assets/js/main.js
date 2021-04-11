@@ -3,15 +3,12 @@ const apiKey = "096b51f6d82cf2d709ac1ea8e159d2b8";
 
 const fetchWeatherData = (cityName) => {
   const functionForJSON = (responseObject) => {
-    // unless you have some logic here do that before you return
     return responseObject.json();
   };
   const functionForApplication = (dataFromServer) => {
-    // whatever your application code is goes here
     console.log(dataFromServer);
   };
   const functionToHandleError = (errorObject) => {
-    // handle your error here according to your application
     console.log("error");
   };
 
