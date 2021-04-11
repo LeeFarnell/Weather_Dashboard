@@ -1,5 +1,7 @@
 const onSubmit = (event) => {
   event.preventDefault();
-  console.log("Submit");
+
+  const cityName = $("#input-city").val();
+  console.log(cityName);
 };
 $("#search-form").on("submit", onSubmit);
