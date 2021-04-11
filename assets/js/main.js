@@ -16,16 +16,20 @@ const buildCityList = () => {
   const ul = $("<ul>").addClass("list-group");
 
   const liToUl = (city) => {
-    const onClick = () => {
-      console.log("Click");
-    };
-
     const li = $("<li>").addClass("list-group-item").text(city);
-    li.on("click", onClick);
     ul.append(li);
   };
 
   cities.map(liToUl);
+
+  const onClick = (event) => {
+    const target = $(event.target);
+    if (target.is("li")) {
+      console.log("li");
+    }
+  };
+
+  ul.on("click", onClick);
 
   $("#city-list").append(ul);
 };
