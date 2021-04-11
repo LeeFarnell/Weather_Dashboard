@@ -163,6 +163,15 @@ const fiveDayCard = (forecastData) => {
 };
 
 const onLoad = () => {
+  const cards = () => {
+    const cardLoad = `<div class="card-body b-2 ">
+  <h3 class="card-title d-inline" id="city-name"> Search for a city to begin.
+  </h3> 
+</div>`;
+    return cardLoad;
+  };
+
+  $("#current-weather").append(cards);
   buildCityList();
 };
 
