@@ -44,23 +44,7 @@ const buildCityList = () => {
     if (target.is("li")) {
       const cityName = target.data("city");
 
-      const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
-
-      const response = await fetchWeatherData(weatherApiUrl);
-
-      const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.coord.lat}&lon=${response.coord.lon}&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
-
-      const fiveDayResponse = await fetchWeatherData(oneApiUrl);
-
-      const fiveDayArray = fiveDayResponse.daily.map(transformForecastData);
-
-      $("#forecast-cards").empty();
-
-      fiveDayArray.slice(1, 6).forEach(fiveDayCard);
-
-      const currentData = transformCurrentData(response);
-
-      mainCard(currentData);
+      createAllCards(cityName);
     }
   };
 
@@ -105,6 +89,10 @@ const onSubmit = async (event) => {
   buildCityList();
   $("#input-city").val("");
 
+  createAllCards(cityName);
+};
+
+const createAllCards = async (cityName) => {
   const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
 
   const response = await fetchWeatherData(weatherApiUrl);
@@ -122,8 +110,6 @@ const onSubmit = async (event) => {
   const currentData = transformCurrentData(response);
 
   mainCard(currentData);
-
-  console.log(currentData);
 };
 
 const mainCard = (weatherData) => {
