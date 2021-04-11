@@ -8,7 +8,20 @@ const getLocalStorage = () => {
   }
 };
 
-const buildCityList = () => {};
+const buildCityList = () => {
+  const cities = getLocalStorage();
+
+  const ul = $("<ul>").addClass("list-group");
+
+  const liToUl = (city) => {
+    const li = `<li class="list-group-item">${city}</li>`;
+    ul.append(li);
+  };
+
+  cities.map(liToUl);
+
+  $("#city-list").append(ul);
+};
 
 const onSubmit = (event) => {
   event.preventDefault();
@@ -25,7 +38,6 @@ const onSubmit = (event) => {
 
 const onLoad = () => {
   buildCityList();
-  console.log("Loaded");
 };
 
 $(document).ready(onLoad);
