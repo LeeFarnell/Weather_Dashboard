@@ -78,8 +78,30 @@ const onSubmit = (event) => {
   fetchWeatherData(cityName);
 };
 
+const weatherData = {
+  cityName: "CITY NAME",
+  temperature: 0,
+  humidity: 0,
+  windSpeed: 0,
+};
+
+const currentWeatherCard = (data) => {
+  const card = `<div class="card-body b-2">
+  <h3 class="card-title d-inline" id="city-name">${weatherData.cityName}</h3>
+  <ul class="list-unstyled">
+    <li class="pt-3">Current Temperature: ${weatherData.temperature}°C</li>
+    <li class="pt-3">Humidity: ${weatherData.humidity}</li>
+    <li class="pt-3">Wind Speed:${weatherData.windSpeed}</li>
+    <li class="pt-3">UV Index:</li>
+  </ul>
+</div>`;
+
+  $("#current-weather").append(card);
+};
+
 const onLoad = () => {
   buildCityList();
+  currentWeatherCard();
 };
 
 $(document).ready(onLoad);
