@@ -1,5 +1,4 @@
 const apiKey = "096b51f6d82cf2d709ac1ea8e159d2b8";
-// const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
 
 const fetchWeatherData = async (weatherApiUrl) => {
   try {
@@ -49,7 +48,17 @@ const buildCityList = () => {
 
       const response = await fetchWeatherData(weatherApiUrl);
 
-      const currentData = transformData(response);
+      const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.coord.lat}&lon=${response.coord.lon}&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
+
+      const fiveDayResponse = await fetchWeatherData(oneApiUrl);
+
+      const fiveDayArray = fiveDayResponse.daily.map(transformForecastData);
+
+      $("#forecast-cards").empty();
+
+      fiveDayArray.slice(1, 6).forEach(fiveDayCard);
+
+      const currentData = transformCurrentData(response);
 
       mainCard(currentData);
     }
@@ -60,7 +69,7 @@ const buildCityList = () => {
   $("#city-list").append(ul);
 };
 
-const transformData = (response) => {
+const transformCurrentData = (response) => {
   return {
     cityName: response.name,
     temperature: response.main.temp,
@@ -69,6 +78,15 @@ const transformData = (response) => {
     uvIndex: 0,
     date: moment.unix(response.dt).format("DD/MM/YY"),
     icon: response.weather[0].icon,
+  };
+};
+
+const transformForecastData = (response) => {
+  return {
+    date: moment.unix(response.dt).format("DD/MM/YY"),
+    icon: response.weather[0].icon,
+    temperature: response.temp.day,
+    humidity: response.humidity,
   };
 };
 
@@ -89,13 +107,22 @@ const onSubmit = async (event) => {
 
   const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
 
-  const data = await fetchWeatherData(weatherApiUrl);
+  const response = await fetchWeatherData(weatherApiUrl);
 
-  const currentData = transformData(data);
+  const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.coord.lat}&lon=${response.coord.lon}&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
+
+  const fiveDayResponse = await fetchWeatherData(oneApiUrl);
+
+  const fiveDayArray = fiveDayResponse.daily.map(transformForecastData);
+
+  $("#forecast-cards").empty();
+
+  fiveDayArray.slice(1, 6).forEach(fiveDayCard);
+
+  const currentData = transformCurrentData(response);
 
   mainCard(currentData);
 
-  console.log(data);
   console.log(currentData);
 };
 
@@ -113,6 +140,25 @@ const mainCard = (weatherData) => {
 </div>`;
 
   $("#current-weather").append(card);
+};
+
+const fiveDayCard = (forecastData) => {
+  const card = `<div class="col-sm">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">${forecastData.date}</h5>
+      <p class="card-text">
+        <ul class="list-unstyled">
+          <li><img src="http://openweathermap.org/img/w/${forecastData.icon}.png" /> </li>
+          <li class="pt-2">Temp: ${forecastData.temperature} °C</li>
+          <li class="pt-2">Humidity: ${forecastData.humidity} </li>
+        </ul>
+      </p>
+    </div>
+  </div>
+</div>`;
+
+  $("#forecast-cards").append(card);
 };
 
 const onLoad = () => {
