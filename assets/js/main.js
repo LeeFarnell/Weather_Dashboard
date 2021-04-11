@@ -47,9 +47,11 @@ const buildCityList = () => {
 
       const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
 
-      const data = await fetchWeatherData(weatherApiUrl);
+      const response = await fetchWeatherData(weatherApiUrl);
 
-      console.log(data);
+      const currentData = transformData(response);
+
+      mainCard(currentData);
     }
   };
 
@@ -98,6 +100,8 @@ const onSubmit = async (event) => {
 };
 
 const mainCard = (weatherData) => {
+  $("#current-weather").empty();
+
   const card = `<div class="card-body b-2">
   <h3 class="card-title d-inline" id="city-name"> ${weatherData.cityName} (${weatherData.date}) </h3> <img src="http://openweathermap.org/img/w/${weatherData.icon}.png" />
   <ul class="list-unstyled">
