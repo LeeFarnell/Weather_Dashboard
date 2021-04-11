@@ -9,6 +9,8 @@ const getLocalStorage = () => {
 };
 
 const buildCityList = () => {
+  $("#city-list").empty();
+
   const cities = getLocalStorage();
 
   const ul = $("<ul>").addClass("list-group");
@@ -34,6 +36,9 @@ const onSubmit = (event) => {
   cities.push(cityName);
 
   localStorage.setItem("cities", JSON.stringify(cities));
+
+  buildCityList();
+  $("#input-city").val("");
 };
 
 const onLoad = () => {
