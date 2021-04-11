@@ -1,7 +1,11 @@
 const getLocalStorage = () => {
   const localStorageData = JSON.parse(localStorage.getItem("cities"));
 
-  console.log(localStorageData);
+  if (localStorageData === null) {
+    return [];
+  } else {
+    return localStorageData;
+  }
 };
 
 const onSubmit = (event) => {
@@ -10,6 +14,10 @@ const onSubmit = (event) => {
   const cityName = $("#input-city").val();
   console.log(cityName);
 
-  getLocalStorage();
+  const cities = getLocalStorage();
+
+  cities.push(cityName);
+
+  localStorage.setItem("cities", JSON.stringify(cities));
 };
 $("#search-form").on("submit", onSubmit);
