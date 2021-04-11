@@ -1,3 +1,24 @@
+const apiKey = "096b51f6d82cf2d709ac1ea8e159d2b8";
+const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName},%20GB&units=metric&appid=${apiKey}`;
+const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
+
+const fetchWeatherData = (cityName) => {
+  const functionForJSON = (responseObject) => {
+    // unless you have some logic here do that before you return
+    return responseObject.json();
+  };
+  const functionForApplication = (dataFromServer) => {
+    // whatever your application code is goes here
+  };
+  const functionToHandleError = (errorObject) => {
+    // handle your error here according to your application
+  };
+  fetch(myUrl)
+    .then(functionForJSON)
+    .then(functionForApplication)
+    .catch(functionToHandleError);
+};
+
 const getLocalStorage = () => {
   const localStorageData = JSON.parse(localStorage.getItem("cities"));
 
