@@ -94,7 +94,7 @@ const onSubmit = async (event) => {
 };
 
 const createAllCards = async (cityName) => {
-  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
+  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
 
   const response = await fetchWeatherData(weatherApiUrl);
 
