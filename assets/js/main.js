@@ -114,16 +114,30 @@ const createAllCards = async (cityName) => {
   mainCard(currentData);
 };
 
+const uvIndexClass = (uvIndex) => {
+  if (uvIndex < 3) {
+    return "p-2 bg-success text-white rounded";
+  } else if (uvIndex > 3 && uvIndex < 6) {
+    return "p-2 bg-warning text-white rounded";
+  } else {
+    return "p-2 bg-danger text-white rounded";
+  }
+};
+
 const mainCard = (weatherData) => {
   $("#current-weather").empty();
 
   const card = `<div class="card-body b-2">
-  <h3 class="card-title d-inline" id="city-name"> ${weatherData.cityName} (${weatherData.date}) </h3> <img src="http://openweathermap.org/img/w/${weatherData.icon}.png" />
+  <h3 class="card-title d-inline" id="city-name"> ${weatherData.cityName} (${
+    weatherData.date
+  }) </h3> <img src="http://openweathermap.org/img/w/${weatherData.icon}.png" />
   <ul class="list-unstyled">
     <li class="pt-3">Current Temperature: ${weatherData.temperature}°C</li>
     <li class="pt-3">Humidity: ${weatherData.humidity}</li>
     <li class="pt-3">Wind Speed: ${weatherData.windSpeed}</li>
-    <li class="pt-3">UV Index: ${weatherData.uvIndex}</li>
+    <li class="pt-3">UV Index: <span class="${uvIndexClass(
+      weatherData.uvIndex
+    )}">${weatherData.uvIndex}</span></li>
   </ul>
 </div>`;
 
@@ -138,7 +152,7 @@ const fiveDayCard = (forecastData) => {
       <p class="card-text">
         <ul class="list-unstyled">
           <li><img src="http://openweathermap.org/img/w/${forecastData.icon}.png" /> </li>
-          <li class="pt-2">Temp: ${forecastData.temperature} °C</li>
+          <li class="pt-2">Temp: ${forecastData.temperature}°C</li>
           <li class="pt-2">Humidity: ${forecastData.humidity} </li>
         </ul>
       </p>
