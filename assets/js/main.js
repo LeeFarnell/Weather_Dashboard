@@ -1,6 +1,5 @@
 const apiKey = "096b51f6d82cf2d709ac1ea8e159d2b8";
-const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName},%20GB&units=metric&appid=${apiKey}`;
-const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
+// const oneApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly&units=metric&appid=${apiKey}`;
 
 const fetchWeatherData = (cityName) => {
   const functionForJSON = (responseObject) => {
@@ -9,11 +8,16 @@ const fetchWeatherData = (cityName) => {
   };
   const functionForApplication = (dataFromServer) => {
     // whatever your application code is goes here
+    console.log(dataFromServer);
   };
   const functionToHandleError = (errorObject) => {
     // handle your error here according to your application
+    console.log("error");
   };
-  fetch(myUrl)
+
+  const weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
+
+  fetch(weatherApiUrl)
     .then(functionForJSON)
     .then(functionForApplication)
     .catch(functionToHandleError);
@@ -50,7 +54,7 @@ const buildCityList = () => {
     const target = $(event.target);
     if (target.is("li")) {
       const cityName = target.data("city");
-      console.log(cityName);
+      fetchWeatherData(cityName);
     }
   };
 
@@ -73,6 +77,8 @@ const onSubmit = (event) => {
 
   buildCityList();
   $("#input-city").val("");
+
+  fetchWeatherData(cityName);
 };
 
 const onLoad = () => {
