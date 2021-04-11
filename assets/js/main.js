@@ -16,7 +16,10 @@ const buildCityList = () => {
   const ul = $("<ul>").addClass("list-group");
 
   const liToUl = (city) => {
-    const li = $("<li>").addClass("list-group-item").text(city);
+    const li = $("<li>")
+      .addClass("list-group-item")
+      .attr("data-city", city)
+      .text(city);
     ul.append(li);
   };
 
@@ -25,7 +28,8 @@ const buildCityList = () => {
   const onClick = (event) => {
     const target = $(event.target);
     if (target.is("li")) {
-      console.log("li");
+      const cityName = target.data("city");
+      console.log(cityName);
     }
   };
 
