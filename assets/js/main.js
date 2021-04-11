@@ -129,9 +129,9 @@ const mainCard = (weatherData) => {
 };
 
 const fiveDayCard = (forecastData) => {
-  const card = `<div class="col-sm">
+  const card = `
   <div class="card">
-    <div class="card-body">
+    <div class="card-body bg-primary text-light ">
       <h5 class="card-title">${forecastData.date}</h5>
       <p class="card-text">
         <ul class="list-unstyled">
