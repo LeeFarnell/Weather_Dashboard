@@ -53,15 +53,17 @@ const buildCityList = () => {
   $("#city-list").append(ul);
 };
 
-const transformCurrentData = (response) => {
+const transformCurrentData = (response, name) => {
+  const current = response.current;
+
   return {
-    cityName: response.name,
-    temperature: response.main.temp,
-    humidity: response.main.humidity,
-    windSpeed: response.wind.speed,
-    uvIndex: 0,
-    date: moment.unix(response.dt).format("DD/MM/YY"),
-    icon: response.weather[0].icon,
+    cityName: name,
+    temperature: current.temp,
+    humidity: current.humidity,
+    windSpeed: current.wind_speed,
+    uvIndex: current.uvi,
+    date: moment.unix(current.dt).format("DD/MM/YY"),
+    icon: current.weather[0].icon,
   };
 };
 
@@ -107,7 +109,7 @@ const createAllCards = async (cityName) => {
 
   fiveDayArray.slice(1, 6).forEach(fiveDayCard);
 
-  const currentData = transformCurrentData(response);
+  const currentData = transformCurrentData(fiveDayResponse, response.name);
 
   mainCard(currentData);
 };
