@@ -16,7 +16,12 @@ const buildCityList = () => {
   const ul = $("<ul>").addClass("list-group");
 
   const liToUl = (city) => {
-    const li = `<li class="list-group-item">${city}</li>`;
+    const onClick = () => {
+      console.log("Click");
+    };
+
+    const li = $("<li>").addClass("list-group-item").text(city);
+    li.on("click", onClick);
     ul.append(li);
   };
 
