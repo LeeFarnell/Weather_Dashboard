@@ -8,7 +8,7 @@ const fetchWeatherData = async (weatherApiUrl) => {
 
     return serverData;
   } catch (error) {
-    console.log("error");
+    return error;
   }
 };
 
@@ -80,7 +80,6 @@ const onSubmit = async (event) => {
   event.preventDefault();
 
   const cityName = $("#input-city").val();
-  console.log(cityName);
 
   const cities = getLocalStorage();
 
@@ -127,7 +126,7 @@ const uvIndexClass = (uvIndex) => {
 const mainCard = (weatherData) => {
   $("#current-weather").empty();
 
-  const card = `<div class="card-body b-2">
+  const card = `<div class="card-body b-2 ">
   <h3 class="card-title d-inline" id="city-name"> ${weatherData.cityName} (${
     weatherData.date
   }) </h3> <img src="http://openweathermap.org/img/w/${weatherData.icon}.png" />
@@ -147,7 +146,7 @@ const mainCard = (weatherData) => {
 const fiveDayCard = (forecastData) => {
   const card = `
   <div class="card">
-    <div class="card-body bg-primary text-light ">
+    <div class="card-body bg-primary text-light rounded">
       <h5 class="card-title">${forecastData.date}</h5>
       <p class="card-text">
         <ul class="list-unstyled">
