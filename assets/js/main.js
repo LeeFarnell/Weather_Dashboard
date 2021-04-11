@@ -8,6 +8,8 @@ const getLocalStorage = () => {
   }
 };
 
+const buildCityList = () => {};
+
 const onSubmit = (event) => {
   event.preventDefault();
 
@@ -20,4 +22,11 @@ const onSubmit = (event) => {
 
   localStorage.setItem("cities", JSON.stringify(cities));
 };
+
+const onLoad = () => {
+  buildCityList();
+  console.log("Loaded");
+};
+
+$(document).ready(onLoad);
 $("#search-form").on("submit", onSubmit);
