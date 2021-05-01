@@ -27,7 +27,7 @@
     <div class="container m-0 row w-100">
       <div class="side col-3" id="side-container">
         <h2>Search For A City</h2>
-        <form class="input-group mb-3">
+        <form class="input-group mb-3" id="search-form">
           <input
             type="text"
             class="form-control"
@@ -36,12 +36,12 @@
             aria-describedby="button-addon2"
             id="city-search"
           />
-          <button class="btn btn-primary" type="button" id="button-addon2">
+          <button class="btn btn-primary" type="submit" id="button-addon2">
             <i class="fas fa-search-location"></i>
           </button>
         </form>
 
-        <div class="recent-history">
+        <div class="recent-history" id="recent-history">
           <ul class="list-group">
             <li class="list-group-item" id="list-item">Recent City Search</li>
             <li class="list-group-item" id="list-item">Recent City Search</li>
@@ -57,6 +57,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./oldmain.js"></script>
   </body>
 </html>
